@@ -25,6 +25,7 @@ class MedsController < ApplicationController
       else
         @best_price = @med.prices.minimum(:value)
         @pharmacy = Pharmacy.find(@med.prices.where(value: @best_price).first.pharmacy_id)
+        Consult.create(med_id: @med.id, user: params[:id])
         render "show.json.rabl", status: :ok
       end
     else
