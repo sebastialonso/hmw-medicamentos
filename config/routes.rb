@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       match '/' => 'meds#show', via: :get
     end
   end
+  resources :pharmacies, path: 'farmacias', only: [:index, :create, :destroy, :edit, :update, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

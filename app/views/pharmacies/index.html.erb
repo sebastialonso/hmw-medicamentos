@@ -1,0 +1,15 @@
+<h3>Farmacias</h3>
+<ul>
+  <% @pharmacies.each do |pharma| %>
+    <li>
+      <%= link_to pharma.name, pharmacy_path(id: pharma.id) %> 
+      <%= link_to 'Editar', edit_pharmacy_path(id: pharma.id) %>
+      <%= link_to 'Borrar', pharmacy_path(id: pharma.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+<h3>Nueva farmacia</h3>
+<%= form_for @new do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Crear' %>
+<% end %>

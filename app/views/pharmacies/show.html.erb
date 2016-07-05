@@ -1,0 +1,6 @@
+<h3>Farmacias</h3>
+<h4>Detalles de farmacia <b><%= @pharmacy.name %></b></h4>
+<% @pharmacy.prices.each do |price| %>
+  <li><%= price.med.name %></li>
+<% end %>
+<%= link_to 'Volver al listado', pharmacies_path %>

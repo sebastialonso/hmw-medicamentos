@@ -1,0 +1,7 @@
+<h3>Farmacias</h3>
+<h4>Actualizando farmacia <b><%= @pharmacy.name %></b></h4>
+<%= form_for @pharmacy do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Guardar cambios' %>
+<% end %>
+<%= link_to 'Volver al listado', pharmacies_path %>
