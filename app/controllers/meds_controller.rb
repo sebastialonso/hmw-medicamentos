@@ -9,8 +9,9 @@ class MedsController < ApplicationController
   end
 
   def create
-    @med = Med.create meds_params
-    if @med.errors.empty?
+    @med = Med.new meds_params
+    @med.name = @med.name.underscore
+    if @med.save
       flash[:success] = 'Medicamento agregado'
       redirect_to action: :index
     end
