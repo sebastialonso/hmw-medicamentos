@@ -1,0 +1,12 @@
+<h2>Medicamentos disponibles</h2>
+<ul>
+<% @meds.each do |med| %>
+  <li><%= med.name %> <%= link_to 'Agregar precio', details_meds_path(id: med.id) %></li>
+<% end %>
+</ul>
+<h4>Agregar medicamento</h4>
+<%= form_for @med do |f| %>
+  <%= f.label :name, 'Nombre' %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Guardar' %>
+<% end %>

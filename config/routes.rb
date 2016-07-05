@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   #get '/medicamentos' => 'meds#show'
-  resources :meds, path: 'medicamentos', only: :none do
+  resources :meds, path: 'medicamentos', only: [:create] do
     collection do
+      match '/:id/detalles' => 'meds#details', via: :get, as: 'details'
+      match '/:id' => 'meds#add_price', via: :post, as: 'add_price'
+      match '/todos' => 'meds#index', via: :get
       match '/' => 'meds#show', via: :get
     end
   end

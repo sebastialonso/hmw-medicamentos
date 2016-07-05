@@ -1,0 +1,24 @@
+<h3>Precios para <%= @med.name %></h3>
+<table style="width:100%">
+  <thead>
+    <tr>
+      <td>Valor</td>
+      <td>Lugar</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @med.prices.each do |price| %>
+      <tr>
+        <td><%= price.value %></td>
+        <td><%= price.pharmacy.try(:name) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= form_for @price, url: add_price_meds_path, method: :post do |f| %>
+  <%= f.label 'Valor' %>
+  <%= f.text_field :value %>
+  <%= f.select :pharmacy_id, @pharmacies, include_blank: true %>
+  <%= f.submit 'Agregar precio'%>
+<% end  %>
+<%= link_to 'Volver a listado', todos_meds_path %>
